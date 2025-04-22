@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company M - Case Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Company M - Customer Support</h1>
+        <h2>Case Management System</h2>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h3>Actions</h3>
+            <button id="newCaseBtn" class="btn">Create New Case</button>
+            <div class="filter-section">
+                <h3>Search & Filter</h3>
+                <div class="form-group">
+                    <label for="customerNameFilter">Customer Name:</label>
+                    <input type="text" id="customerNameFilter" placeholder="Filter by name...">
+                </div>
+                <div class="form-group">
+                    <label for="channelFilter">Channel:</label>
+                    <select id="channelFilter">
+                        <option value="">All Channels</option>
+                        <!-- Will be populated dynamically -->
+                    </select>
+                </div>
+                <button id="applyFilterBtn" class="btn">Apply Filter</button>
+                <button id="resetFilterBtn" class="btn btn-secondary">Reset</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="caseList">
+                <h3>All Customer Cases</h3>
+                <table id="casesTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Channel</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="casesTableBody">
+                        <!-- Will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="caseForm" class="hidden">
+                <h3 id="formTitle">New Case</h3>
+                <form id="createEditCaseForm">
+                    <input type="hidden" id="caseId">
+
+                    <div class="form-group">
+                        <label for="customerId">Customer:</label>
+                        <select id="customerId" required>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                        <button type="button" id="newCustomerBtn" class="btn btn-small">Add New</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="channelId">Channel:</label>
+                        <select id="channelId" required>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" rows="5"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <select id="status" required>
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Save Case</button>
+                        <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="customerForm" class="hidden">
+                <h3>New Customer</h3>
+                <form id="createCustomerForm">
+                    <div class="form-group">
+                        <label for="customerName">Name:</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Save Customer</button>
+                        <button type="button" id="cancelCustomerBtn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="caseDetails" class="hidden">
+                <h3>Case Details</h3>
+                <div id="caseDetailsContent"></div>
+                <div class="form-actions">
+                    <button id="editCaseBtn" class="btn">Edit</button>
+                    <button id="deleteCaseBtn" class="btn btn-danger">Delete</button>
+                    <button id="backToListBtn" class="btn btn-secondary">Back to List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmDialog" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Delete</h3>
+            <p>Are you sure you want to delete this case? This action cannot be undone.</p>
+            <div class="form-actions">
+                <button id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+                <button id="cancelDeleteBtn" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/customerService.js"></script>
+    <script src="js/caseService.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
