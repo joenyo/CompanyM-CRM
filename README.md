@@ -1,4 +1,3 @@
-@ -0,0 +1,128 @@
 # Company M - Case Management System
 
 A comprehensive Customer Relationship Management (CRM) system built for Company M's Customer Support department. This application allows support staff to efficiently track and manage customer queries from multiple channels.
